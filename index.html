@@ -76,12 +76,12 @@ body {
 
 .mono { font-family: 'JetBrains Mono', monospace; }
 
-/* ============ HEADER: מסך אתחול רשת - רקע שמנת / כיתוב אדום ============ */
+/* ============ HEADER: מהודק וקומפקטי ============ */
 header {
   position: relative;
   background: linear-gradient(160deg, #fbf3e2 0%, #f7ecd6 55%, #f9efdb 100%);
   color: #b91c1c;
-  padding: 34px 20px 46px;
+  padding: 16px 20px 22px; /* רווח פנימי מוקטן */
   text-align: center;
   overflow: hidden;
   border-bottom: 1px solid rgba(185, 28, 28, 0.22);
@@ -97,13 +97,13 @@ header::before {
   pointer-events: none;
 }
 
-/* ---- שורת גיבור: תמונה מימין, טקסט משמאל ---- */
+/* ---- שורת גיבור קומפקטית ---- */
 .hero-row {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 34px;
+  gap: 20px;
   max-width: 1300px;
   margin: 0 auto;
   flex-wrap: wrap-reverse;
@@ -114,18 +114,18 @@ header::before {
 }
 
 .hero-image img {
-  width: 168px;
-  height: 168px;
+  width: 100px; /* מוקטן מ-168px */
+  height: 100px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid #b91c1c;
-  box-shadow: 0 0 0 7px rgba(185, 28, 28, 0.12), 0 14px 30px -10px rgba(185, 28, 28, 0.35);
+  border: 3px solid #b91c1c;
+  box-shadow: 0 0 0 4px rgba(185, 28, 28, 0.12), 0 8px 18px -6px rgba(185, 28, 28, 0.35);
   background: #fff;
 }
 
 .hero-text {
   flex: 1;
-  min-width: 280px;
+  min-width: 260px;
 }
 
 /* ---- שורת ניווט עליונה ---- */
@@ -134,22 +134,29 @@ header::before {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 14px;
+  gap: 10px;
   max-width: 1300px;
-  margin: 0 auto 30px;
+  margin: 0 auto 14px; /* רווח מוקטן */
+  flex-wrap: wrap;
+}
+
+.nav-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
   flex-wrap: wrap;
 }
 
 .nav-btn {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 700;
-  padding: 10px 18px;
-  border-radius: 11px;
+  padding: 8px 14px;
+  border-radius: 9px;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   cursor: pointer;
   border: none;
   transition: transform 0.18s ease, opacity 0.18s ease;
@@ -157,6 +164,18 @@ header::before {
 }
 
 .nav-btn:hover { transform: translateY(-2px); }
+
+/* לחצן בית בולט */
+.nav-btn.home-btn {
+  background: linear-gradient(120deg, #059669, #047857);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(4, 120, 87, 0.35);
+  font-weight: 800;
+}
+
+.nav-btn.home-btn:hover {
+  background: linear-gradient(120deg, #10b981, #059669);
+}
 
 .nav-btn.outline {
   background: rgba(255, 255, 255, 0.55);
@@ -167,7 +186,7 @@ header::before {
 .nav-btn.solid {
   background: linear-gradient(120deg, #dc2626, #b91c1c);
   color: #fff5f0;
-  box-shadow: 0 8px 22px -6px rgba(185, 28, 28, 0.5);
+  box-shadow: 0 6px 16px -4px rgba(185, 28, 28, 0.4);
 }
 
 .statusbar {
@@ -175,21 +194,21 @@ header::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 12.5px;
-  letter-spacing: 0.4px;
+  font-size: 11.5px;
+  letter-spacing: 0.3px;
   color: #b45309;
-  margin-bottom: 22px;
+  margin-bottom: 10px;
   flex-wrap: wrap;
 }
 
 .statusbar .dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: #b91c1c;
-  box-shadow: 0 0 0 4px rgba(185, 28, 28, 0.2);
+  box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.2);
   animation: pulse 1.8s ease-in-out infinite;
 }
 
@@ -201,20 +220,19 @@ header::before {
   backdrop-filter: blur(10px);
   color: #b91c1c;
   font-weight: 800;
-  padding: 7px 20px;
-  border-radius: 30px;
-  font-size: 14px;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 12.5px;
   display: inline-block;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   border: 1px solid rgba(185, 28, 28, 0.35);
-  letter-spacing: 0.4px;
 }
 
 h1 {
   position: relative;
-  margin: 8px 0 6px;
+  margin: 2px 0 4px;
   font-family: 'Rubik', 'Assistant', sans-serif;
-  font-size: 44px;
+  font-size: 32px; /* מוקטן מ-44px */
   font-weight: 900;
   letter-spacing: -0.5px;
   color: #b91c1c;
@@ -222,45 +240,44 @@ h1 {
 
 header p.subtitle {
   position: relative;
-  margin: 4px 0 26px;
+  margin: 2px 0 14px;
   color: #c2410c;
   font-weight: 700;
-  font-size: 17px;
+  font-size: 15px;
 }
 
 .protocol-row {
   position: relative;
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 6px;
   flex-wrap: wrap;
 }
 
 .protocol-chip {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   color: #b91c1c;
   background: rgba(255, 255, 255, 0.55);
   border: 1px solid rgba(185, 28, 28, 0.3);
-  padding: 6px 13px;
-  border-radius: 8px;
-  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  border-radius: 6px;
 }
 
-/* ---- פינת המהנדס המטורלל: פס קריאה לפעולה ---- */
+/* ---- פינת המהנדס המטורלל: מהודקת ---- */
 .mentor-banner {
   position: relative;
   max-width: 1300px;
-  margin: 34px auto 0;
+  margin: 18px auto 0;
   background: rgba(255, 255, 255, 0.55);
   border: 1px solid rgba(185, 28, 28, 0.3);
-  border-radius: 16px;
-  padding: 18px 24px;
+  border-radius: 12px;
+  padding: 10px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 18px;
+  gap: 12px;
   flex-wrap: wrap;
   backdrop-filter: blur(6px);
 }
@@ -268,13 +285,13 @@ header p.subtitle {
 .mentor-text b {
   color: #b91c1c;
   font-family: 'Rubik', sans-serif;
-  font-size: 15.5px;
+  font-size: 14px;
 }
 
 .mentor-text p {
-  margin: 4px 0 0;
+  margin: 2px 0 0;
   color: #c2410c;
-  font-size: 13.5px;
+  font-size: 12.5px;
   font-weight: 600;
 }
 
@@ -282,14 +299,14 @@ header p.subtitle {
   flex-shrink: 0;
   font-family: 'JetBrains Mono', monospace;
   font-weight: 800;
-  font-size: 14px;
-  padding: 12px 22px;
-  border-radius: 12px;
+  font-size: 13px;
+  padding: 8px 16px;
+  border-radius: 9px;
   border: none;
   cursor: pointer;
   background: linear-gradient(120deg, #fbbf24, #f97316);
   color: #2a1400;
-  box-shadow: 0 10px 25px -8px rgba(251, 191, 36, 0.6);
+  box-shadow: 0 6px 18px -6px rgba(251, 191, 36, 0.6);
   transition: transform 0.18s ease;
 }
 
@@ -300,22 +317,22 @@ header p.subtitle {
 .quicknav {
   position: relative;
   max-width: 1300px;
-  margin: 16px auto 0;
+  margin: 12px auto 0;
   display: flex;
-  gap: 9px;
+  gap: 7px;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 .quicknav a {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 700;
   color: #b91c1c;
   background: rgba(255, 255, 255, 0.5);
   border: 1px solid rgba(185, 28, 28, 0.28);
-  padding: 8px 15px;
-  border-radius: 20px;
+  padding: 6px 12px;
+  border-radius: 16px;
   text-decoration: none;
   transition: all 0.18s ease;
   white-space: nowrap;
@@ -340,14 +357,14 @@ header p.subtitle {
 .container {
   width: 92%;
   max-width: 1300px;
-  margin: 44px auto;
+  margin: 30px auto;
 }
 
 .panel {
   position: relative;
   background: var(--card);
-  padding: 30px 30px 28px;
-  margin-bottom: 30px;
+  padding: 24px 24px 22px;
+  margin-bottom: 24px;
   border-radius: var(--radius);
   border: 1px solid var(--panel-border);
   box-shadow: var(--shadow);
@@ -359,15 +376,15 @@ header p.subtitle {
   justify-content: space-between;
   gap: 14px;
   flex-wrap: wrap;
-  margin-bottom: 20px;
-  padding-bottom: 14px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
   border-bottom: 1px dashed var(--panel-border);
 }
 
 .panel-head h2 {
   color: var(--text);
   font-family: 'Rubik', 'Assistant', sans-serif;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 800;
   margin: 0;
   display: flex;
@@ -377,21 +394,21 @@ header p.subtitle {
 
 .panel-tag {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.6px;
   color: var(--cyan);
   background: var(--cyan-soft);
   border: 1px solid var(--panel-border);
-  padding: 4px 11px;
-  border-radius: 7px;
+  padding: 3px 9px;
+  border-radius: 6px;
   white-space: nowrap;
 }
 
 .panel-body-text {
-  font-size: 16.5px;
+  font-size: 15.5px;
   font-weight: 700;
-  line-height: 1.8;
+  line-height: 1.7;
   margin: 0;
   color: var(--text-muted);
 }
@@ -474,11 +491,11 @@ header p.subtitle {
 .meter {
   display: flex;
   width: 100%;
-  height: 26px;
+  height: 24px;
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid var(--panel-border);
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .meter span {
@@ -497,7 +514,7 @@ header p.subtitle {
   align-items: center;
   gap: 9px;
   font-weight: 700;
-  font-size: 14.5px;
+  font-size: 14px;
 }
 
 .legend-swatch {
@@ -522,7 +539,7 @@ header p.subtitle {
   justify-content: space-between;
   gap: 14px;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .signal-bars {
@@ -551,29 +568,29 @@ header p.subtitle {
 .signal-text {
   font-family: 'JetBrains Mono', monospace;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 14.5px;
   color: var(--text);
 }
 
-.signal-text b { color: var(--green); font-size: 18px; }
+.signal-text b { color: var(--green); font-size: 17px; }
 
 .checklist-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 10px;
 }
 
 .checklist-card {
   background: var(--bg);
   border: 1px solid var(--panel-border);
   border-right: 4px solid var(--panel-border);
-  padding: 14px 16px;
-  border-radius: 10px;
+  padding: 12px 14px;
+  border-radius: 9px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 14.5px;
   cursor: pointer;
   transition: all 0.2s ease;
   user-select: none;
@@ -602,7 +619,7 @@ header p.subtitle {
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-  gap: 22px;
+  gap: 20px;
 }
 
 .node-card {
@@ -624,7 +641,7 @@ header p.subtitle {
 }
 
 .node-head {
-  padding: 18px 20px 4px;
+  padding: 16px 18px 4px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -634,7 +651,7 @@ header p.subtitle {
 .node-title {
   font-family: 'Rubik', sans-serif;
   font-weight: 800;
-  font-size: 18px;
+  font-size: 17.5px;
 }
 
 .node-id {
@@ -644,16 +661,16 @@ header p.subtitle {
   white-space: nowrap;
 }
 
-.node-body { padding: 12px 20px 20px; display: flex; flex-direction: column; flex-grow: 1; }
+.node-body { padding: 10px 18px 18px; display: flex; flex-direction: column; flex-grow: 1; }
 
 .node-subnet {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 12.5px;
+  font-size: 12px;
   color: var(--cyan);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
-.tags-container { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; }
+.tags-container { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
 
 .tag {
   background: var(--bg);
@@ -661,20 +678,20 @@ header p.subtitle {
   border: 1px solid var(--panel-border);
   font-family: 'JetBrains Mono', monospace;
   font-weight: 600;
-  font-size: 12px;
-  padding: 5px 11px;
-  border-radius: 20px;
+  font-size: 11.5px;
+  padding: 4px 10px;
+  border-radius: 18px;
 }
 
 .node-card button {
   width: 100%;
-  padding: 12px;
+  padding: 11px;
   border: 1px solid var(--panel-border);
-  border-radius: 10px;
+  border-radius: 9px;
   background: transparent;
   color: var(--text);
   cursor: pointer;
-  font-size: 14.5px;
+  font-size: 14px;
   font-weight: 800;
   font-family: 'Assistant', sans-serif;
   transition: all 0.2s ease;
@@ -685,22 +702,20 @@ header p.subtitle {
 
 .details {
   display: none;
-  margin-top: 14px;
+  margin-top: 12px;
   background: var(--bg);
-  padding: 16px 16px 16px 28px;
-  border-radius: 10px;
+  padding: 14px 14px 14px 24px;
+  border-radius: 9px;
   border: 1px solid var(--panel-border);
 }
 
-.details ol { margin: 0; padding-right: 16px; font-weight: 700; line-height: 1.75; font-size: 14.5px; }
-
-.detail-block { margin-bottom: 14px; }
+.detail-block { margin-bottom: 12px; }
 .detail-block:last-child { margin-bottom: 0; }
 
 .detail-block h4 {
-  margin: 0 0 5px;
+  margin: 0 0 4px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.4px;
   color: var(--cyan);
@@ -711,38 +726,38 @@ header p.subtitle {
 
 .detail-block p {
   margin: 0;
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 600;
-  line-height: 1.7;
+  line-height: 1.65;
   color: var(--text);
 }
 
 .spec-strip {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 8px;
-  margin-top: 16px;
-  padding-top: 14px;
+  margin-top: 14px;
+  padding-top: 12px;
   border-top: 1px dashed var(--panel-border);
 }
 
 .spec-item {
   background: var(--card);
   border: 1px solid var(--panel-border);
-  border-radius: 8px;
-  padding: 8px 10px;
+  border-radius: 7px;
+  padding: 7px 9px;
 }
 
 .spec-item span {
   display: block;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 9.5px;
+  font-size: 9px;
   color: var(--text-muted);
   letter-spacing: 0.4px;
-  margin-bottom: 3px;
+  margin-bottom: 2px;
 }
 
-.spec-item b { font-size: 12px; font-weight: 700; }
+.spec-item b { font-size: 11.5px; font-weight: 700; }
 
 /* ============ מה מגישים: טרמינל ============ */
 ul.submit-list { padding-right: 22px; font-weight: 700; line-height: 1.8; }
@@ -759,13 +774,13 @@ ul.submit-list { padding-right: 22px; font-weight: 700; line-height: 1.8; }
   display: flex;
   align-items: center;
   gap: 7px;
-  padding: 10px 14px;
+  padding: 8px 12px;
   background: #0a0f1a;
   border-bottom: 1px solid rgba(34, 211, 238, 0.15);
 }
 
 .terminal-bar span {
-  width: 10px; height: 10px; border-radius: 50%;
+  width: 9px; height: 9px; border-radius: 50%;
 }
 .terminal-bar span:nth-child(1) { background: #ef4444; }
 .terminal-bar span:nth-child(2) { background: #f59e0b; }
@@ -773,11 +788,11 @@ ul.submit-list { padding-right: 22px; font-weight: 700; line-height: 1.8; }
 
 .terminal pre {
   margin: 0;
-  padding: 18px 22px;
+  padding: 16px 20px;
   color: #9beeff;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 13.5px;
-  line-height: 1.9;
+  font-size: 13px;
+  line-height: 1.85;
   direction: ltr;
   text-align: left;
 }
@@ -788,14 +803,14 @@ ul.submit-list { padding-right: 22px; font-weight: 700; line-height: 1.8; }
 /* ============ כפתור מצב תצוגה ============ */
 .darkBtn {
   position: fixed;
-  top: 22px;
-  left: 22px;
-  width: 46px;
-  height: 46px;
+  top: 18px;
+  left: 18px;
+  width: 42px;
+  height: 42px;
   border: 1px solid rgba(185, 28, 28, 0.35);
   border-radius: 50%;
   cursor: pointer;
-  font-size: 19px;
+  font-size: 17px;
   z-index: 9999;
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(10px);
@@ -809,15 +824,15 @@ ul.submit-list { padding-right: 22px; font-weight: 700; line-height: 1.8; }
 
 .darkBtn:hover { transform: scale(1.1); }
 
-/* ============ עוזר הפרויקט הצף: צומת עוזר ============ */
+/* ============ עוזר הפרויקט הצף ============ */
 .bot-widget {
   position: fixed;
-  bottom: 22px;
-  left: 22px;
-  width: 296px;
+  bottom: 18px;
+  left: 18px;
+  width: 280px;
   background: var(--card);
   color: var(--text);
-  border-radius: 18px;
+  border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 18px 40px rgba(0,0,0,0.28);
   z-index: 9999;
@@ -828,10 +843,10 @@ ul.submit-list { padding-right: 22px; font-weight: 700; line-height: 1.8; }
 .bot-header {
   background: linear-gradient(135deg, #0b2540, #062a2e);
   color: #eaf6fb;
-  padding: 13px 16px;
+  padding: 11px 14px;
   font-weight: 800;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 12.5px;
+  font-size: 12px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -846,57 +861,57 @@ ul.submit-list { padding-right: 22px; font-weight: 700; line-height: 1.8; }
   flex-shrink: 0;
 }
 
-.bot-body { padding: 18px; }
+.bot-body { padding: 14px; }
 
 .bot-avatar {
-  width: 84px;
-  height: 84px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
   display: block;
-  margin: 0 auto 12px auto;
+  margin: 0 auto 10px auto;
   object-fit: cover;
   border: 3px solid var(--cyan);
-  box-shadow: 0 0 0 5px var(--cyan-soft);
+  box-shadow: 0 0 0 4px var(--cyan-soft);
 }
 
 .bot-body p.greet {
-  margin: 0 0 10px 0;
+  margin: 0 0 8px 0;
   font-weight: 800;
   text-align: center;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .bot-body .lead {
   font-weight: 600;
-  font-size: 12.5px;
+  font-size: 12px;
   text-align: center;
   color: var(--text-muted);
-  margin: 0 0 12px;
+  margin: 0 0 10px;
 }
 
-.bot-chips { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 14px; }
+.bot-chips { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; margin-bottom: 12px; }
 
 .bot-chip {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 10.5px;
+  font-size: 10px;
   font-weight: 600;
   color: var(--text-muted);
   background: var(--bg);
   border: 1px solid var(--panel-border);
-  padding: 4px 9px;
-  border-radius: 6px;
+  padding: 3px 7px;
+  border-radius: 5px;
 }
 
 .bot-btn {
   display: block;
   text-align: center;
-  padding: 12px;
+  padding: 10px;
   background: var(--green);
   color: #06231a;
   text-decoration: none;
-  border-radius: 10px;
+  border-radius: 8px;
   font-weight: 800;
-  font-size: 14px;
+  font-size: 13px;
   font-family: 'JetBrains Mono', monospace;
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
@@ -909,10 +924,10 @@ footer {
   color: var(--text-muted);
   font-weight: 700;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 12.5px;
+  font-size: 12px;
   text-align: center;
-  padding: 26px;
-  margin-top: 50px;
+  padding: 20px;
+  margin-top: 40px;
   letter-spacing: 0.3px;
 }
 
@@ -934,17 +949,17 @@ footer {
 
 @media (max-width: 780px) {
   .route-line, .route-packet { display: none; }
-  .route-hops { grid-template-columns: 1fr; gap: 20px; }
+  .route-hops { grid-template-columns: 1fr; gap: 16px; }
   .hop { flex-direction: row; text-align: right; gap: 12px; }
   .hop-dot { margin-bottom: 0; }
 }
 
 @media (max-width: 640px) {
-  h1 { font-size: 30px; }
-  .bot-widget { width: 260px; left: 14px; bottom: 14px; }
-  .darkBtn { top: 14px; left: 14px; }
-  .panel { padding: 22px 18px; }
-  .hero-image img { width: 110px; height: 110px; }
+  h1 { font-size: 26px; }
+  .bot-widget { width: 250px; left: 12px; bottom: 12px; }
+  .darkBtn { top: 12px; left: 12px; }
+  .panel { padding: 18px 14px; }
+  .hero-image img { width: 80px; height: 80px; }
 }
 </style>
 </head>
@@ -955,7 +970,11 @@ footer {
 
 <header>
   <nav class="navbar">
-    <a class="nav-btn outline" href="#projects">🚀 פתח את מאגר הפרויקטים עכשיו</a>
+    <div class="nav-group">
+      <!-- 🏠 לחצן דף הבית הבולט -->
+      <a class="nav-btn home-btn" href="#">🏠 דף הבית</a>
+      <a class="nav-btn outline" href="#projects">🚀 מאגר הפרויקטים</a>
+    </div>
     <a class="nav-btn solid" href="https://gemini.google.com/gem/13FFjtbW5S3yg0EE1qBEQiP8GEMwoepKu?usp=sharing" target="_blank" rel="noopener">🖥️ אקדמיית האחוואנים</a>
   </nav>
 
@@ -1012,7 +1031,7 @@ footer {
   </div>
   <p class="panel-body-text">
   הפרויקט מסכם את הידע שנרכש במהלך כיתה י'.
-  עליכם לתכנן רשת מחשבים, לממש אותה ב־Cisco Packet Tracer,
+  עליכם לתכנון רשת מחשבים, לממש אותה ב־Cisco Packet Tracer,
   לבצע חלק מהעבודה במעבדה, לתעד ולהציג את התוצר הסופי.
   </p>
 </div>
@@ -1222,7 +1241,7 @@ const projects = [
     tech: "קישוריות WAN בין החפ\"ק בשטח לבין המפקדה. שרת FTP להעלאת תמונות אוויר וסרטוני רחפנים.",
     physical: "חיבור כבל סריאלי/אתרנט בין נתבים פיזיים והגדרת הכתובות ב-CLI.",
     value: "תחושת שליחות והבנת השילוב בין רשת LAN מקומית לקישור WAN מרוחק.",
-    spec: { vlan: "LAN מקומי", servers: "FTP", routing: "קישורית WAN", security: "דיאגנוסטיקת רשת" }
+    spec: { vlan: "LAN מקומי", servers: "FTP", routing: "קישוריות WAN", security: "דיאגנוסטיקת רשת" }
   },
   {
     title: "🏥 בית חולים חכם",
