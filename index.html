@@ -58,6 +58,7 @@ body.dark {
 body {
   margin: 0;
   font-family: 'Assistant', 'Heebo', sans-serif;
+  font-size: 18px; /* הגדלת פונט הבסיס */
   background-color: var(--bg);
   background-image:
     linear-gradient(var(--grid-line) 1px, transparent 1px),
@@ -76,12 +77,28 @@ body {
 
 .mono { font-family: 'JetBrains Mono', monospace; }
 
-/* ============ HEADER: מהודק וקומפקטי ============ */
+/* עיצוב ומסגור מונחים באנגלית */
+.en-term {
+  font-family: 'JetBrains Mono', monospace;
+  display: inline-block;
+  direction: ltr;
+  padding: 2px 8px;
+  margin: 0 2px;
+  font-size: 0.9em;
+  font-weight: 700;
+  color: var(--cyan);
+  background: var(--cyan-soft);
+  border: 1px solid var(--panel-border);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* ============ HEADER ============ */
 header {
   position: relative;
   background: linear-gradient(160deg, #fbf3e2 0%, #f7ecd6 55%, #f9efdb 100%);
   color: #b91c1c;
-  padding: 16px 20px 22px; /* רווח פנימי מוקטן */
+  padding: 20px 20px 26px;
   text-align: center;
   overflow: hidden;
   border-bottom: 1px solid rgba(185, 28, 28, 0.22);
@@ -97,7 +114,6 @@ header::before {
   pointer-events: none;
 }
 
-/* ---- שורת גיבור קומפקטית ---- */
 .hero-row {
   position: relative;
   display: flex;
@@ -114,8 +130,8 @@ header::before {
 }
 
 .hero-image img {
-  width: 100px; /* מוקטן מ-168px */
-  height: 100px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid #b91c1c;
@@ -128,7 +144,6 @@ header::before {
   min-width: 260px;
 }
 
-/* ---- שורת ניווט עליונה ---- */
 .navbar {
   position: relative;
   display: flex;
@@ -136,7 +151,7 @@ header::before {
   justify-content: space-between;
   gap: 10px;
   max-width: 1300px;
-  margin: 0 auto 14px; /* רווח מוקטן */
+  margin: 0 auto 14px;
   flex-wrap: wrap;
 }
 
@@ -149,9 +164,9 @@ header::before {
 
 .nav-btn {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 12.5px;
+  font-size: 14px; /* מוגדל */
   font-weight: 700;
-  padding: 8px 14px;
+  padding: 8px 16px;
   border-radius: 9px;
   text-decoration: none;
   display: inline-flex;
@@ -165,7 +180,6 @@ header::before {
 
 .nav-btn:hover { transform: translateY(-2px); }
 
-/* לחצן בית בולט */
 .nav-btn.home-btn {
   background: linear-gradient(120deg, #059669, #047857);
   color: #ffffff;
@@ -196,7 +210,7 @@ header::before {
   justify-content: center;
   gap: 8px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11.5px;
+  font-size: 13px; /* מוגדל */
   letter-spacing: 0.3px;
   color: #b45309;
   margin-bottom: 10px;
@@ -204,8 +218,8 @@ header::before {
 }
 
 .statusbar .dot {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: #b91c1c;
   box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.2);
@@ -220,9 +234,9 @@ header::before {
   backdrop-filter: blur(10px);
   color: #b91c1c;
   font-weight: 800;
-  padding: 4px 14px;
+  padding: 6px 16px;
   border-radius: 20px;
-  font-size: 12.5px;
+  font-size: 14px; /* מוגדל */
   display: inline-block;
   margin-bottom: 8px;
   border: 1px solid rgba(185, 28, 28, 0.35);
@@ -230,9 +244,9 @@ header::before {
 
 h1 {
   position: relative;
-  margin: 2px 0 4px;
+  margin: 4px 0 6px;
   font-family: 'Rubik', 'Assistant', sans-serif;
-  font-size: 32px; /* מוקטן מ-44px */
+  font-size: 36px; /* מוגדל */
   font-weight: 900;
   letter-spacing: -0.5px;
   color: #b91c1c;
@@ -243,29 +257,28 @@ header p.subtitle {
   margin: 2px 0 14px;
   color: #c2410c;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 17px; /* מוגדל */
 }
 
 .protocol-row {
   position: relative;
   display: flex;
   justify-content: center;
-  gap: 6px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
 .protocol-chip {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 600;
+  font-size: 13px; /* מוגדל */
+  font-weight: 700;
   color: #b91c1c;
   background: rgba(255, 255, 255, 0.55);
   border: 1px solid rgba(185, 28, 28, 0.3);
-  padding: 4px 10px;
+  padding: 5px 12px;
   border-radius: 6px;
 }
 
-/* ---- פינת המהנדס המטורלל: מהודקת ---- */
 .mentor-banner {
   position: relative;
   max-width: 1300px;
@@ -273,7 +286,7 @@ header p.subtitle {
   background: rgba(255, 255, 255, 0.55);
   border: 1px solid rgba(185, 28, 28, 0.3);
   border-radius: 12px;
-  padding: 10px 18px;
+  padding: 12px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -285,13 +298,13 @@ header p.subtitle {
 .mentor-text b {
   color: #b91c1c;
   font-family: 'Rubik', sans-serif;
-  font-size: 14px;
+  font-size: 16px; /* מוגדל */
 }
 
 .mentor-text p {
   margin: 2px 0 0;
   color: #c2410c;
-  font-size: 12.5px;
+  font-size: 14.5px; /* מוגדל */
   font-weight: 600;
 }
 
@@ -299,8 +312,8 @@ header p.subtitle {
   flex-shrink: 0;
   font-family: 'JetBrains Mono', monospace;
   font-weight: 800;
-  font-size: 13px;
-  padding: 8px 16px;
+  font-size: 15px; /* מוגדל */
+  padding: 10px 18px;
   border-radius: 9px;
   border: none;
   cursor: pointer;
@@ -313,25 +326,24 @@ header p.subtitle {
 .roll-btn:hover { transform: scale(1.04) translateY(-1px); }
 .roll-btn:active { transform: scale(0.97); }
 
-/* ---- שורת ניווט מהיר למקטעים ---- */
 .quicknav {
   position: relative;
   max-width: 1300px;
-  margin: 12px auto 0;
+  margin: 14px auto 0;
   display: flex;
-  gap: 7px;
+  gap: 8px;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 .quicknav a {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11.5px;
+  font-size: 13px; /* מוגדל */
   font-weight: 700;
   color: #b91c1c;
   background: rgba(255, 255, 255, 0.5);
   border: 1px solid rgba(185, 28, 28, 0.28);
-  padding: 6px 12px;
+  padding: 7px 14px;
   border-radius: 16px;
   text-decoration: none;
   transition: all 0.18s ease;
@@ -363,8 +375,8 @@ header p.subtitle {
 .panel {
   position: relative;
   background: var(--card);
-  padding: 24px 24px 22px;
-  margin-bottom: 24px;
+  padding: 28px 28px 24px;
+  margin-bottom: 26px;
   border-radius: var(--radius);
   border: 1px solid var(--panel-border);
   box-shadow: var(--shadow);
@@ -376,15 +388,15 @@ header p.subtitle {
   justify-content: space-between;
   gap: 14px;
   flex-wrap: wrap;
-  margin-bottom: 16px;
-  padding-bottom: 12px;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
   border-bottom: 1px dashed var(--panel-border);
 }
 
 .panel-head h2 {
   color: var(--text);
   font-family: 'Rubik', 'Assistant', sans-serif;
-  font-size: 20px;
+  font-size: 24px; /* מוגדל */
   font-weight: 800;
   margin: 0;
   display: flex;
@@ -394,26 +406,26 @@ header p.subtitle {
 
 .panel-tag {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: 13px; /* מוגדל */
   font-weight: 700;
   letter-spacing: 0.6px;
   color: var(--cyan);
   background: var(--cyan-soft);
   border: 1px solid var(--panel-border);
-  padding: 3px 9px;
+  padding: 4px 11px;
   border-radius: 6px;
   white-space: nowrap;
 }
 
 .panel-body-text {
-  font-size: 15.5px;
+  font-size: 18px; /* מוגדל */
   font-weight: 700;
   line-height: 1.7;
   margin: 0;
   color: var(--text-muted);
 }
 
-/* ============ לוח זמנים: מסלול Traceroute ============ */
+/* ============ לוח זמנים ============ */
 .route-track {
   position: relative;
   padding-top: 6px;
@@ -456,15 +468,15 @@ header p.subtitle {
 
 .hop-ttl {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: 13px; /* מוגדל */
   color: var(--text-muted);
   margin-bottom: 6px;
   letter-spacing: 0.4px;
 }
 
 .hop-dot {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background: var(--card);
   border: 3px solid var(--cyan);
@@ -474,7 +486,7 @@ header p.subtitle {
 
 .hop-label {
   font-weight: 800;
-  font-size: 14.5px;
+  font-size: 16.5px; /* מוגדל */
   color: var(--text);
   line-height: 1.5;
 }
@@ -482,20 +494,20 @@ header p.subtitle {
 .hop-label small {
   display: block;
   font-weight: 700;
-  font-size: 12.5px;
+  font-size: 14px; /* מוגדל */
   color: var(--text-muted);
   margin-top: 3px;
 }
 
-/* ============ מחוון הערכה: מד תעבורה ============ */
+/* ============ מחוון הערכה ============ */
 .meter {
   display: flex;
   width: 100%;
-  height: 24px;
+  height: 26px;
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid var(--panel-border);
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .meter span {
@@ -505,7 +517,7 @@ header p.subtitle {
 
 .meter-legend {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 10px 18px;
 }
 
@@ -514,12 +526,12 @@ header p.subtitle {
   align-items: center;
   gap: 9px;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 16px; /* מוגדל */
 }
 
 .legend-swatch {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   border-radius: 3px;
   flex-shrink: 0;
 }
@@ -546,12 +558,12 @@ header p.subtitle {
   display: flex;
   align-items: flex-end;
   gap: 4px;
-  height: 22px;
+  height: 24px;
 }
 
 .signal-bars i {
   display: block;
-  width: 7px;
+  width: 8px;
   background: var(--panel-border);
   border-radius: 2px;
   transition: background 0.3s ease;
@@ -568,29 +580,29 @@ header p.subtitle {
 .signal-text {
   font-family: 'JetBrains Mono', monospace;
   font-weight: 700;
-  font-size: 14.5px;
+  font-size: 16px; /* מוגדל */
   color: var(--text);
 }
 
-.signal-text b { color: var(--green); font-size: 17px; }
+.signal-text b { color: var(--green); font-size: 19px; }
 
 .checklist-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
 }
 
 .checklist-card {
   background: var(--bg);
   border: 1px solid var(--panel-border);
   border-right: 4px solid var(--panel-border);
-  padding: 12px 14px;
+  padding: 14px 16px;
   border-radius: 9px;
   display: flex;
   align-items: center;
   gap: 10px;
   font-weight: 700;
-  font-size: 14.5px;
+  font-size: 16.5px; /* מוגדל */
   cursor: pointer;
   transition: all 0.2s ease;
   user-select: none;
@@ -615,11 +627,11 @@ header p.subtitle {
 
 .checklist-card input { display: none; }
 
-/* ============ מאגר פרויקטים: כרטיסי צמתים ============ */
+/* ============ מאגר פרויקטים ============ */
 .projects {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 22px;
 }
 
 .node-card {
@@ -636,12 +648,12 @@ header p.subtitle {
 .node-card:hover { transform: translateY(-5px); }
 
 .node-topbar {
-  height: 5px;
+  height: 6px;
   width: 100%;
 }
 
 .node-head {
-  padding: 16px 18px 4px;
+  padding: 18px 20px 6px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -651,21 +663,21 @@ header p.subtitle {
 .node-title {
   font-family: 'Rubik', sans-serif;
   font-weight: 800;
-  font-size: 17.5px;
+  font-size: 19.5px; /* מוגדל */
 }
 
 .node-id {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: 12.5px; /* מוגדל */
   color: var(--text-muted);
   white-space: nowrap;
 }
 
-.node-body { padding: 10px 18px 18px; display: flex; flex-direction: column; flex-grow: 1; }
+.node-body { padding: 10px 20px 20px; display: flex; flex-direction: column; flex-grow: 1; }
 
 .node-subnet {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
+  font-size: 13.5px; /* מוגדל */
   color: var(--cyan);
   margin-bottom: 12px;
 }
@@ -678,20 +690,20 @@ header p.subtitle {
   border: 1px solid var(--panel-border);
   font-family: 'JetBrains Mono', monospace;
   font-weight: 600;
-  font-size: 11.5px;
-  padding: 4px 10px;
+  font-size: 13px; /* מוגדל */
+  padding: 4px 11px;
   border-radius: 18px;
 }
 
 .node-card button {
   width: 100%;
-  padding: 11px;
+  padding: 12px;
   border: 1px solid var(--panel-border);
   border-radius: 9px;
   background: transparent;
   color: var(--text);
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16px; /* מוגדל */
   font-weight: 800;
   font-family: 'Assistant', sans-serif;
   transition: all 0.2s ease;
@@ -702,20 +714,20 @@ header p.subtitle {
 
 .details {
   display: none;
-  margin-top: 12px;
+  margin-top: 14px;
   background: var(--bg);
-  padding: 14px 14px 14px 24px;
+  padding: 16px;
   border-radius: 9px;
   border: 1px solid var(--panel-border);
 }
 
-.detail-block { margin-bottom: 12px; }
+.detail-block { margin-bottom: 14px; }
 .detail-block:last-child { margin-bottom: 0; }
 
 .detail-block h4 {
   margin: 0 0 4px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: 13px; /* מוגדל */
   font-weight: 700;
   letter-spacing: 0.4px;
   color: var(--cyan);
@@ -726,7 +738,7 @@ header p.subtitle {
 
 .detail-block p {
   margin: 0;
-  font-size: 13.5px;
+  font-size: 15.5px; /* מוגדל */
   font-weight: 600;
   line-height: 1.65;
   color: var(--text);
@@ -734,7 +746,7 @@ header p.subtitle {
 
 .spec-strip {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   gap: 8px;
   margin-top: 14px;
   padding-top: 12px;
@@ -745,42 +757,42 @@ header p.subtitle {
   background: var(--card);
   border: 1px solid var(--panel-border);
   border-radius: 7px;
-  padding: 7px 9px;
+  padding: 8px 10px;
 }
 
 .spec-item span {
   display: block;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
+  font-size: 10.5px; /* מוגדל */
   color: var(--text-muted);
   letter-spacing: 0.4px;
   margin-bottom: 2px;
 }
 
-.spec-item b { font-size: 11.5px; font-weight: 700; }
+.spec-item b { font-size: 13px; font-weight: 700; } /* מוגדל */
 
 /* ============ מה מגישים: טרמינל ============ */
-ul.submit-list { padding-right: 22px; font-weight: 700; line-height: 1.8; }
+ul.submit-list { padding-right: 24px; font-weight: 700; font-size: 18px; line-height: 1.8; }
 
 .terminal {
   background: #060a12;
   border: 1px solid rgba(34, 211, 238, 0.22);
   border-radius: 12px;
   overflow: hidden;
-  margin-top: 4px;
+  margin-top: 8px;
 }
 
 .terminal-bar {
   display: flex;
   align-items: center;
   gap: 7px;
-  padding: 8px 12px;
+  padding: 10px 14px;
   background: #0a0f1a;
   border-bottom: 1px solid rgba(34, 211, 238, 0.15);
 }
 
 .terminal-bar span {
-  width: 9px; height: 9px; border-radius: 50%;
+  width: 10px; height: 10px; border-radius: 50%;
 }
 .terminal-bar span:nth-child(1) { background: #ef4444; }
 .terminal-bar span:nth-child(2) { background: #f59e0b; }
@@ -788,10 +800,10 @@ ul.submit-list { padding-right: 22px; font-weight: 700; line-height: 1.8; }
 
 .terminal pre {
   margin: 0;
-  padding: 16px 20px;
+  padding: 18px 22px;
   color: #9beeff;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
+  font-size: 15px; /* מוגדל */
   line-height: 1.85;
   direction: ltr;
   text-align: left;
@@ -803,14 +815,14 @@ ul.submit-list { padding-right: 22px; font-weight: 700; line-height: 1.8; }
 /* ============ כפתור מצב תצוגה ============ */
 .darkBtn {
   position: fixed;
-  top: 18px;
-  left: 18px;
-  width: 42px;
-  height: 42px;
+  top: 22px;
+  left: 22px;
+  width: 48px;
+  height: 48px;
   border: 1px solid rgba(185, 28, 28, 0.35);
   border-radius: 50%;
   cursor: pointer;
-  font-size: 17px;
+  font-size: 20px;
   z-index: 9999;
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(10px);
@@ -829,7 +841,7 @@ ul.submit-list { padding-right: 22px; font-weight: 700; line-height: 1.8; }
   position: fixed;
   bottom: 18px;
   left: 18px;
-  width: 280px;
+  width: 290px;
   background: var(--card);
   color: var(--text);
   border-radius: 16px;
@@ -846,7 +858,7 @@ ul.submit-list { padding-right: 22px; font-weight: 700; line-height: 1.8; }
   padding: 11px 14px;
   font-weight: 800;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
+  font-size: 12.5px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -878,12 +890,12 @@ ul.submit-list { padding-right: 22px; font-weight: 700; line-height: 1.8; }
   margin: 0 0 8px 0;
   font-weight: 800;
   text-align: center;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .bot-body .lead {
   font-weight: 600;
-  font-size: 12px;
+  font-size: 13px;
   text-align: center;
   color: var(--text-muted);
   margin: 0 0 10px;
@@ -893,7 +905,7 @@ ul.submit-list { padding-right: 22px; font-weight: 700; line-height: 1.8; }
 
 .bot-chip {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 600;
   color: var(--text-muted);
   background: var(--bg);
@@ -911,7 +923,7 @@ ul.submit-list { padding-right: 22px; font-weight: 700; line-height: 1.8; }
   text-decoration: none;
   border-radius: 8px;
   font-weight: 800;
-  font-size: 13px;
+  font-size: 13.5px;
   font-family: 'JetBrains Mono', monospace;
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
@@ -924,9 +936,9 @@ footer {
   color: var(--text-muted);
   font-weight: 700;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
+  font-size: 13.5px; /* מוגדל */
   text-align: center;
-  padding: 20px;
+  padding: 22px;
   margin-top: 40px;
   letter-spacing: 0.3px;
 }
@@ -955,11 +967,11 @@ footer {
 }
 
 @media (max-width: 640px) {
-  h1 { font-size: 26px; }
+  h1 { font-size: 28px; }
   .bot-widget { width: 250px; left: 12px; bottom: 12px; }
   .darkBtn { top: 12px; left: 12px; }
-  .panel { padding: 18px 14px; }
-  .hero-image img { width: 80px; height: 80px; }
+  .panel { padding: 20px 16px; }
+  .hero-image img { width: 85px; height: 85px; }
 }
 </style>
 </head>
@@ -1031,7 +1043,7 @@ footer {
   </div>
   <p class="panel-body-text">
   הפרויקט מסכם את הידע שנרכש במהלך כיתה י'.
-  עליכם לתכנון רשת מחשבים, לממש אותה ב־Cisco Packet Tracer,
+  עליכם לתכנון רשת מחשבים, לממש אותה ב־<span class="en-term">Cisco Packet Tracer</span>,
   לבצע חלק מהעבודה במעבדה, לתעד ולהציג את התוצר הסופי.
   </p>
 </div>
@@ -1062,7 +1074,7 @@ footer {
       <div class="hop">
         <span class="hop-ttl mono">TTL 4</span>
         <span class="hop-dot"></span>
-        <div class="hop-label">אפריל<small>כתיבת PDF</small></div>
+        <div class="hop-label">אפריל<small>כתיבת <span class="en-term">PDF</span></small></div>
       </div>
       <div class="hop">
         <span class="hop-ttl mono">TTL 5</span>
@@ -1109,10 +1121,10 @@ footer {
     <label class="checklist-card"><input type="checkbox" onchange="calc(this)"><span class="bracket mono">[ ]</span> <span>בחרתי נושא</span></label>
     <label class="checklist-card"><input type="checkbox" onchange="calc(this)"><span class="bracket mono">[ ]</span> <span>אישור מורה</span></label>
     <label class="checklist-card"><input type="checkbox" onchange="calc(this)"><span class="bracket mono">[ ]</span> <span>בניית טופולוגיה</span></label>
-    <label class="checklist-card"><input type="checkbox" onchange="calc(this)"><span class="bracket mono">[ ]</span> <span>סיום Packet Tracer</span></label>
+    <label class="checklist-card"><input type="checkbox" onchange="calc(this)"><span class="bracket mono">[ ]</span> <span>סיום <span class="en-term">Packet Tracer</span></span></label>
     <label class="checklist-card"><input type="checkbox" onchange="calc(this)"><span class="bracket mono">[ ]</span> <span>עבודה במעבדה</span></label>
     <label class="checklist-card"><input type="checkbox" onchange="calc(this)"><span class="bracket mono">[ ]</span> <span>צילומי מסך</span></label>
-    <label class="checklist-card"><input type="checkbox" onchange="calc(this)"><span class="bracket mono">[ ]</span> <span>כתיבת PDF</span></label>
+    <label class="checklist-card"><input type="checkbox" onchange="calc(this)"><span class="bracket mono">[ ]</span> <span>כתיבת <span class="en-term">PDF</span></span></label>
     <label class="checklist-card"><input type="checkbox" onchange="calc(this)"><span class="bracket mono">[ ]</span> <span>הכנת מצגת</span></label>
   </div>
 </div>
@@ -1131,8 +1143,8 @@ footer {
     <span class="panel-tag mono">TAG: PAYLOAD</span>
   </div>
   <ul class="submit-list">
-    <li>קובץ Packet Tracer ‏(.pkt)</li>
-    <li>דוח PDF</li>
+    <li>קובץ <span class="en-term">Packet Tracer</span> (<span class="en-term">.pkt</span>)</li>
+    <li>דוח <span class="en-term">PDF</span></li>
     <li>צילומי מסך</li>
     <li>צילומי עבודה במעבדה</li>
     <li>מצגת</li>
@@ -1163,7 +1175,7 @@ footer {
         <img class="bot-avatar" src="https://lh3.googleusercontent.com/d/1fzqv93VKIW_VT8-e1HdJxBmbU2sFnwlb" alt="דן GPT עוזר הפרויקט">
 
         <p class="greet">שלום תלמידים 👋</p>
-        <p class="lead">אני דן GPT, עוזר מטלת הביצוע שלכם. אפשר להיעזר בי ב:</p>
+        <p class="lead">אני דן <span class="en-term">GPT</span>, עוזר מטלת הביצוע שלכם. אפשר להיעזר בי ב:</p>
 
         <div class="bot-chips">
             <span class="bot-chip">Packet Tracer</span>
