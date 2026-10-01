@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>אקדמיית הרשתות - מטלת ביצוע 30% | סהר תשתיות ורשתות תקשורת</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#e6f1ff;--surface:rgba(255,255,255,.86);--raised:rgba(255,255,255,.9);--line:#cfdcee;--a1:rgba(34,211,238,.55);--a2:rgba(167,139,250,.5);--a3:rgba(251,191,36,.45);--a4:rgba(244,114,182,.38);--text:#0d1424;--muted:#56657c;
+  --cyan:#0e7490;--cyan-s:#dff4f9;--green:#047857;--green-s:#dff7ec;--amber:#b45309;--amber-s:#fdf0da;--violet:#6d28d9;--violet-s:#efe8fb;
+  --brand:#c81e3a;--grid:rgba(13,20,36,.05);--shadow:0 1px 2px rgba(13,20,36,.06),0 12px 32px -16px rgba(13,20,36,.18);
+  --sans:'IBM Plex Sans Hebrew','Assistant',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;
+}
+[data-theme=dark]{
+  --bg:#0d1630;--surface:rgba(22,33,66,.78);--raised:rgba(32,46,88,.7);--line:rgba(160,184,230,.2);--a1:rgba(34,211,238,.38);--a2:rgba(139,92,246,.42);--a3:rgba(251,146,60,.26);--a4:rgba(236,72,153,.3);--text:#e8eef8;--muted:#8d9cb5;
+  --cyan:#3ddcff;--cyan-s:rgba(61,220,255,.1);--green:#34d399;--green-s:rgba(52,211,153,.1);--amber:#fbbf24;--amber-s:rgba(251,191,36,.1);--violet:#a78bfa;--violet-s:rgba(167,139,250,.1);
+  --brand:#ff5470;--grid:rgba(61,220,255,.045);--shadow:0 1px 0 rgba(255,255,255,.03) inset,0 20px 40px -20px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;font-family:var(--sans);font-size:17px;line-height:1.65;color:var(--text);background:var(--bg);transition:background .3s,color .3s}
+body::after{content:"";position:fixed;inset:-25%;z-index:-2;pointer-events:none;background:radial-gradient(38% 34% at 22% 18%,var(--a1),transparent 70%),radial-gradient(34% 30% at 80% 14%,var(--a2),transparent 70%),radial-gradient(36% 32% at 70% 78%,var(--a3),transparent 70%),radial-gradient(34% 30% at 14% 82%,var(--a4),transparent 70%);animation:aurora 26s ease-in-out infinite alternate}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(ellipse 80% 60% at 50% 0,#000 30%,transparent 80%)}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:6px}
+a{color:inherit;text-decoration:none}
+.mono{font-family:var(--mono)}
+.en-term{font-family:var(--mono);direction:ltr;display:inline-block;font-size:.86em;font-weight:700;color:var(--cyan);background:var(--cyan-s);border:1px solid var(--line);padding:0 7px;border-radius:6px}
+
+/* top bar */
+.topbar{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px) saturate(1.4);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.topbar-in{max-width:1240px;margin:auto;padding:10px 20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.btn{font-family:var(--mono);font-size:13.5px;font-weight:700;padding:8px 15px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--text);cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:border-color .2s,background .2s,transform .15s}
+.btn:hover{border-color:var(--cyan)}
+.btn:active{transform:scale(.97)}
+.btn.home{background:var(--green);border-color:transparent;color:#03150f}
+.btn.brand{background:var(--brand);border-color:transparent;color:#fff;margin-inline-start:auto}
+.theme{width:40px;height:40px;padding:0;justify-content:center;border-radius:50%;font-size:17px}
+
+/* hero */
+.hero{max-width:1240px;margin:auto;padding:44px 20px 24px}
+.hero-grid{display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center}
+.logo{width:132px;height:132px;border-radius:50%;object-fit:cover;background:#fff;border:3px solid var(--brand);box-shadow:0 0 0 8px color-mix(in srgb,var(--brand) 14%,transparent),0 0 60px -10px var(--brand)}
+.status{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;font-family:var(--mono);font-size:12.5px;color:var(--muted);direction:ltr;justify-content:flex-end}
+.status .dot,.bot-head .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px var(--green-s);animation:pulse 1.8s ease-in-out infinite;flex-shrink:0}
+.status .sep{opacity:.4}
+.badge{display:inline-block;margin:14px 0 4px;font-weight:700;font-size:14px;color:var(--brand);border:1px solid color-mix(in srgb,var(--brand) 45%,transparent);background:color-mix(in srgb,var(--brand) 9%,transparent);padding:3px 14px;border-radius:99px}
+h1{margin:4px 0 4px;font-size:clamp(34px,6vw,60px);line-height:1.08;font-weight:700;letter-spacing:-.02em}
+.subtitle{margin:0 0 18px;color:var(--muted);font-weight:500;font-size:19px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--mono);font-size:12.5px;font-weight:700;color:var(--cyan);background:var(--cyan-s);border:1px solid var(--line);padding:4px 12px;border-radius:8px}
+
+.mentor{margin-top:30px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:16px 22px;border-radius:16px;background:linear-gradient(100deg,var(--amber-s),transparent 70%),var(--surface);border:1px solid color-mix(in srgb,var(--amber) 35%,var(--line))}
+.mentor b{font-size:18px}
+.mentor p{margin:2px 0 0;color:var(--muted);font-size:15.5px}
+.roll{font-family:var(--mono);font-weight:700;font-size:14.5px;padding:11px 20px;border:0;border-radius:11px;cursor:pointer;background:var(--amber);color:#1c1000;transition:transform .15s}
+.roll:hover{transform:translateY(-2px)}.roll:active{transform:scale(.97)}
+
+.quicknav{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+.quicknav a{font-size:14px;font-weight:600;padding:7px 15px;border-radius:99px;border:1px solid var(--line);background:var(--surface);color:var(--muted);transition:.2s}
+.quicknav a:hover{color:var(--text);border-color:var(--cyan)}
+.quicknav a.current{background:var(--cyan-s);color:var(--cyan);border-color:var(--cyan)}
+
+/* layout */
+main{max-width:1240px;margin:auto;padding:12px 20px 60px;display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+.panel{backdrop-filter:blur(14px) saturate(1.3);grid-column:span 12;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px;box-shadow:var(--shadow)}
+.p6{grid-column:span 6}
+.head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.head h2{margin:0;font-size:24px;font-weight:700;letter-spacing:-.01em}
+.tag{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.04em;color:var(--muted);border:1px solid var(--line);background:var(--raised);padding:3px 10px;border-radius:7px;direction:ltr}
+.lead{margin:0;font-size:19px;font-weight:500;line-height:1.8;color:var(--muted);max-width:70ch}
+
+/* timeline */
+.route{position:relative;padding-top:4px}
+.route-line{position:absolute;top:34px;inset-inline:10%;height:2px;background:repeating-linear-gradient(90deg,var(--cyan) 0 8px,transparent 8px 15px);opacity:.5}
+.packet{position:absolute;top:-4px;width:10px;height:10px;border-radius:50%;background:var(--green);box-shadow:0 0 14px 3px var(--green);animation:travel 5s ease-in-out infinite}
+.hops{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.hop{display:flex;flex-direction:column;align-items:center;text-align:center}
+.ttl{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin-bottom:8px}
+.hop-dot{width:22px;height:22px;border-radius:50%;background:var(--surface);border:3px solid var(--cyan);margin-bottom:12px;z-index:1}
+.hop-label{font-weight:700;font-size:17px;line-height:1.5}
+.hop-label small{display:block;font-weight:500;font-size:14.5px;color:var(--muted)}
+
+/* rubric */
+.meter{display:flex;height:34px;border-radius:10px;overflow:hidden;gap:3px;margin-bottom:20px}
+.meter span{display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:700;font-size:13px;color:#06101a}
+.legend{display:grid;gap:10px}
+.legend div{display:flex;align-items:center;gap:10px;font-weight:600;font-size:16px;padding:9px 12px;background:var(--raised);border-radius:10px}
+.sw{width:12px;height:12px;border-radius:3px;flex-shrink:0}
+.pct{font-family:var(--mono);font-weight:700;color:var(--muted);margin-inline-start:auto}
+
+/* progress */
+.sig{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.bars{display:flex;align-items:flex-end;gap:4px;height:26px}
+.bars i{width:8px;background:var(--line);border-radius:2px;transition:background .3s}
+.bars i:nth-child(1){height:30%}.bars i:nth-child(2){height:50%}.bars i:nth-child(3){height:68%}.bars i:nth-child(4){height:84%}.bars i:nth-child(5){height:100%}
+.bars i.on{background:var(--green)}
+.sig-text{font-family:var(--mono);font-weight:700;font-size:15px}
+.sig-text b{color:var(--green);font-size:20px}
+.checks{display:grid;gap:10px}
+.check{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:12px;background:var(--raised);border:1px solid var(--line);border-inline-start:4px solid var(--line);font-weight:600;font-size:16px;cursor:pointer;user-select:none;transition:.2s}
+.check:hover{border-color:var(--cyan)}
+.check:has(input:focus-visible){outline:2px solid var(--cyan);outline-offset:2px}
+.check.checked{background:var(--green-s);border-inline-start-color:var(--green)}
+.check .bracket{font-family:var(--mono);font-weight:700;color:var(--muted)}
+.check.checked .bracket{color:var(--green)}
+.check input{position:absolute;opacity:0;pointer-events:none}
+
+/* projects */
+.projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px;align-items:start}
+.node{background:var(--raised);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:border-color .2s,transform .2s}
+.node:hover{border-color:color-mix(in srgb,var(--c) 60%,var(--line))}
+.node-bar{height:4px;background:var(--c)}
+.node-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:16px 18px 4px}
+.node-title{font-weight:700;font-size:19px}
+.node-id{font-family:var(--mono);font-size:12px;color:var(--muted);white-space:nowrap}
+.node-body{padding:6px 18px 18px}
+.subnet{font-family:var(--mono);font-size:13px;color:var(--c);margin-bottom:12px;direction:ltr;text-align:right}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.pill{font-family:var(--mono);font-size:12.5px;font-weight:500;color:var(--muted);background:var(--surface);border:1px solid var(--line);padding:3px 11px;border-radius:99px}
+.toggle{width:100%;padding:11px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--text);font:600 15.5px var(--sans);cursor:pointer;transition:.2s}
+.toggle:hover{background:var(--text);color:var(--surface)}
+.details{display:none;margin-top:14px}
+.details.open{display:block;animation:reveal .25s ease}
+.block{padding:12px 0;border-top:1px solid var(--line)}
+.block:first-child{border-top:0;padding-top:2px}
+.block h4{margin:0 0 3px;font-size:14.5px;font-weight:700;color:var(--c)}
+.block p{margin:0;font-size:15.5px;line-height:1.65}
+.spec{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px;padding-top:14px;border-top:1px dashed var(--line)}
+.spec div{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:8px 10px}
+.spec span{display:block;font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:2px}
+.spec b{font-size:13.5px;font-weight:600}
+.node.flash{animation:flash 1.4s ease}
+
+/* submit */
+.submit{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.submit ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.submit li{padding:12px 16px;border-radius:12px;background:var(--raised);border:1px solid var(--line);font-weight:600;font-size:17px}
+.terminal{background:#060a12;border:1px solid rgba(61,220,255,.22);border-radius:14px;overflow:hidden}
+.t-bar{display:flex;gap:7px;padding:11px 14px;background:#0a101c;border-bottom:1px solid rgba(61,220,255,.14)}
+.t-bar span{width:10px;height:10px;border-radius:50%}
+.t-bar span:nth-child(1){background:#ef4444}.t-bar span:nth-child(2){background:#f59e0b}.t-bar span:nth-child(3){background:#22c55e}
+.terminal pre{margin:0;padding:18px 22px;color:#9beeff;font:15px/1.9 var(--mono);direction:ltr;text-align:left;overflow-x:auto}
+.terminal .file{color:#eafcff}.terminal .dir{color:#34d399}
+
+/* bot */
+.bot{position:fixed;bottom:calc(18px + env(safe-area-inset-bottom,0px));left:18px;right:auto;width:296px;background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 24px 50px -12px rgba(0,0,0,.5);z-index:40}
+.bot-head{display:flex;align-items:center;gap:8px;padding:11px 14px;background:var(--raised);border-bottom:1px solid var(--line);font:700 12.5px var(--mono);direction:ltr}
+.bot-body{padding:14px;text-align:center}
+.bot-avatar{width:68px;height:68px;border-radius:50%;object-fit:cover;border:3px solid var(--cyan);box-shadow:0 0 0 4px var(--cyan-s);margin-bottom:8px}
+.greet{margin:0 0 4px;font-weight:700;font-size:16px}
+.bot .lead{font-size:13.5px;line-height:1.55;font-weight:500;margin:0 0 10px}
+.bot-chips{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-bottom:12px}
+.bot-chip{font:500 11px var(--mono);color:var(--muted);background:var(--raised);border:1px solid var(--line);padding:2px 7px;border-radius:5px}
+.bot-btn{display:block;padding:10px;background:var(--green);color:#03150f;border-radius:10px;font:700 13px var(--mono);direction:ltr;transition:opacity .2s}
+.bot-btn:hover{opacity:.88}
+
+footer{border-top:1px solid var(--line);padding:24px 20px calc(24px + env(safe-area-inset-bottom,0px));text-align:center;color:var(--muted);font:500 13.5px var(--mono)}
+
+@keyframes aurora{0%{transform:translate3d(0,0,0) scale(1) rotate(0)}50%{transform:translate3d(4%,-3%,0) scale(1.1) rotate(4deg)}100%{transform:translate3d(-4%,4%,0) scale(1.05) rotate(-4deg)}}
+@keyframes pulse{50%{opacity:.4}}
+@keyframes travel{0%,100%{right:0}50%{right:calc(100% - 10px)}}
+@keyframes reveal{from{opacity:0;transform:translateY(-6px)}}
+@keyframes flash{30%{box-shadow:0 0 0 3px var(--cyan),0 0 40px -4px var(--cyan)}}
+@media(max-width:980px){.p6{grid-column:span 12}.submit{grid-template-columns:1fr}}
+@media(max-width:780px){
+  .hero-grid{grid-template-columns:1fr;justify-items:center;text-align:center}
+  .status,.chips{justify-content:center}
+  .route-line,.packet{display:none}
+  .hops{grid-template-columns:1fr;gap:14px}
+  .hop{flex-direction:row;gap:14px;text-align:right}
+  .hop-dot{margin:0}.ttl{margin:0;min-width:48px}
+}
+@media(max-width:640px){
+  body{font-size:16px}.panel{padding:20px 16px}.logo{width:100px;height:100px}
+  .bot{position:static;width:auto;margin:0 20px 20px}
+  .btn.brand{margin-inline-start:0}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="topbar-in">
+  <a class="btn home" href="#">🏠 דף הבית</a>
+  <a class="btn" href="#projects">🚀 מאגר הפרויקטים</a>
+  <a class="btn brand" href="https://gemini.google.com/gem/13FFjtbW5S3yg0EE1qBEQiP8GEMwoepKu?usp=sharing" target="_blank" rel="noopener">🖥️ אקדמיית הרשתות</a>
+  <button class="btn theme" onclick="toggleDark()" title="החלף מצב תצוגה" aria-label="החלף מצב תצוגה" id="darkToggleBtn">🌙</button>
+</div></div>
+
+<header class="hero">
+  <div class="hero-grid">
+    <img class="logo" src="https://lh3.googleusercontent.com/d/1oIkZlLHZWtFgoDblyxziTALQZwsyxAOo" alt="אקדמיית הרשתות עם סהר">
+    <div>
+      <div class="status"><span class="dot"></span><span>session: active</span><span class="sep">//</span><span>academy.tikshuv.local</span><span class="sep">//</span><span>10.0.30.0/24</span></div>
+      <span class="badge">אקדמיית הרשתות של סהר</span>
+      <h1>מטלת ביצוע 30%</h1>
+      <p class="subtitle">מגמת תקשוב | תשתיות ורשתות תקשורת | כיתה י'</p>
+      <div class="chips"><span class="chip">VLAN</span><span class="chip">DHCP</span><span class="chip">DNS</span><span class="chip">STATIC ROUTING</span><span class="chip">PACKET TRACER</span></div>
+    </div>
+  </div>
+
+  <div class="mentor">
+    <div><b>🔥 פינת המהנדס המטורלל</b><p>לא בטוחים באיזה רעיון לבחור? לחצו על הכפתור ונגריל לכם השראה מתוך 12 הפרויקטים!</p></div>
+    <button class="roll" onclick="rollProject()">🎲 הגרילו לי רעיון!</button>
+  </div>
+
+  <nav class="quicknav" aria-label="ניווט מהיר">
+    <a href="#panel-goal">🎯 מטרה</a>
+    <a href="#panel-timeline">📅 לוח זמנים</a>
+    <a href="#panel-rubric">📊 מחוון</a>
+    <a href="#panel-progress">✅ מעקב</a>
+    <a href="#projects" class="current">🚀 מאגר פרויקטים</a>
+    <a href="#panel-submit">📁 הגשה</a>
+  </nav>
+</header>
+
+<main>
+<section class="panel" id="panel-goal">
+  <div class="head"><h2>🎯 מטרת הפרויקט</h2><span class="tag">TAG: MISSION</span></div>
+  <p class="lead">הפרויקט מסכם את הידע שנרכש במהלך כיתה י'. עליכם לתכנון רשת מחשבים, לממש אותה ב־<span class="en-term">Cisco Packet Tracer</span>, לבצע חלק מהעבודה במעבדה, לתעד ולהציג את התוצר הסופי.</p>
+</section>
+
+<section class="panel" id="panel-timeline">
+  <div class="head"><h2>📅 לוח זמנים</h2><span class="tag">TAG: ROUTE TRACE</span></div>
+  <div class="route">
+    <div class="route-line"><span class="packet"></span></div>
+    <div class="hops">
+      <div class="hop"><span class="ttl">TTL 1</span><span class="hop-dot"></span><div class="hop-label">אוקטובר-נובמבר<small>בחירת נושא</small></div></div>
+      <div class="hop"><span class="ttl">TTL 2</span><span class="hop-dot"></span><div class="hop-label">עד ינואר<small>איסוף מידע</small></div></div>
+      <div class="hop"><span class="ttl">TTL 3</span><span class="hop-dot"></span><div class="hop-label">פברואר-מרץ<small>פיתוח וביצוע</small></div></div>
+      <div class="hop"><span class="ttl">TTL 4</span><span class="hop-dot"></span><div class="hop-label">אפריל<small>כתיבת <span class="en-term">PDF</span></small></div></div>
+      <div class="hop"><span class="ttl">TTL 5</span><span class="hop-dot"></span><div class="hop-label">מאי-יוני<small>הצגה והגנה</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="panel p6" id="panel-rubric">
+  <div class="head"><h2>📊 מחוון הערכה</h2><span class="tag">TAG: METRICS</span></div>
+  <div class="meter" role="img" aria-label="התפלגות ציון: 30%, 20%, 30%, 20%">
+    <span style="width:30%;background:var(--cyan)">30%</span><span style="width:20%;background:var(--green)">20%</span><span style="width:30%;background:var(--amber)">30%</span><span style="width:20%;background:var(--violet)">20%</span>
+  </div>
+  <div class="legend">
+    <div><span class="sw" style="background:var(--cyan)"></span>הבנת הנושא ויישומו<span class="pct">30%</span></div>
+    <div><span class="sw" style="background:var(--green)"></span>תיעוד ותהליך עבודה<span class="pct">20%</span></div>
+    <div><span class="sw" style="background:var(--amber)"></span>תוצר סופי<span class="pct">30%</span></div>
+    <div><span class="sw" style="background:var(--violet)"></span>הצגה וסיכום אישי<span class="pct">20%</span></div>
+  </div>
+</section>
+
+<section class="panel p6" id="panel-progress">
+  <div class="head"><h2>✅ מעקב התקדמות</h2><span class="tag">TAG: TASK LOG</span></div>
+  <div class="sig">
+    <div class="bars" id="signalBars"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="sig-text">איכות קליטה של המשימה: <b id="progress-percent">0%</b></div>
+  </div>
+  <div class="checks" style="grid-template-columns:repeat(auto-fill,minmax(200px,1fr))">
+    <label class="check"><input type="checkbox" onchange="calc(this)"><span class="bracket">[ ]</span><span>בחרתי נושא</span></label>
+    <label class="check"><input type="checkbox" onchange="calc(this)"><span class="bracket">[ ]</span><span>אישור מורה</span></label>
+    <label class="check"><input type="checkbox" onchange="calc(this)"><span class="bracket">[ ]</span><span>בניית טופולוגיה</span></label>
+    <label class="check"><input type="checkbox" onchange="calc(this)"><span class="bracket">[ ]</span><span>סיום <span class="en-term">Packet Tracer</span></span></label>
+    <label class="check"><input type="checkbox" onchange="calc(this)"><span class="bracket">[ ]</span><span>עבודה במעבדה</span></label>
+    <label class="check"><input type="checkbox" onchange="calc(this)"><span class="bracket">[ ]</span><span>צילומי מסך</span></label>
+    <label class="check"><input type="checkbox" onchange="calc(this)"><span class="bracket">[ ]</span><span>כתיבת <span class="en-term">PDF</span></span></label>
+    <label class="check"><input type="checkbox" onchange="calc(this)"><span class="bracket">[ ]</span><span>הכנת מצגת</span></label>
+  </div>
+</section>
+
+<section class="panel" id="panel-projects">
+  <div class="head"><h2>🚀 מאגר הפרויקטים</h2><span class="tag">TAG: TOPOLOGY BANK</span></div>
+  <div class="projects" id="projects"></div>
+</section>
+
+<section class="panel" id="panel-submit">
+  <div class="head"><h2>📁 מה מגישים?</h2><span class="tag">TAG: PAYLOAD</span></div>
+  <div class="submit">
+    <ul>
+      <li>קובץ <span class="en-term">Packet Tracer</span> (<span class="en-term">.pkt</span>)</li>
+      <li>דוח <span class="en-term">PDF</span></li>
+      <li>צילומי מסך</li>
+      <li>צילומי עבודה במעבדה</li>
+      <li>מצגת</li>
+    </ul>
+    <div class="terminal">
+      <div class="t-bar"><span></span><span></span><span></span></div>
+<pre>$ tree ./שם_תלמיד
+
+<span class="dir">📁 Screenshots</span>
+<span class="dir">📁 PhysicalLab</span>
+
+<span class="file">project.pkt</span>
+<span class="file">report.pdf</span>
+<span class="file">presentation.pptx</span></pre>
+    </div>
+  </div>
+</section>
+</main>
+
+<aside class="bot">
+  <div class="bot-head"><span class="dot"></span>NODE: DAN-GPT // ONLINE</div>
+  <div class="bot-body">
+    <img class="bot-avatar" src="https://lh3.googleusercontent.com/d/1fzqv93VKIW_VT8-e1HdJxBmbU2sFnwlb" alt="דן GPT עוזר הפרויקט">
+    <p class="greet">שלום תלמידים 👋</p>
+    <p class="lead">אני דן <span class="en-term">GPT</span>, עוזר מטלת הביצוע שלכם. אפשר להיעזר בי ב:</p>
+    <div class="bot-chips">
+      <span class="bot-chip">Packet Tracer</span><span class="bot-chip">VLANs</span><span class="bot-chip">DHCP</span><span class="bot-chip">DNS</span><span class="bot-chip">FTP</span><span class="bot-chip">Static Routing</span><span class="bot-chip">Troubleshooting</span><span class="bot-chip">דוח PDF</span><span class="bot-chip">מצגת</span>
+    </div>
+    <a class="bot-btn" href="https://gemini.google.com/gem/13FFjtbW5S3yg0EE1qBEQiP8GEMwoepKu?usp=sharing" target="_blank" rel="noopener">$ connect --gem dan-gpt</a>
+  </div>
+</aside>
+
+<footer>session: מטלת ביצוע 30% // תשתיות ורשתות תקשורת // אקדמיית האחוואנים // בהצלחה 💪</footer>
+
+<script>
+const projects = [
+  {
+    title: "🏎️ Pit Stop פורמולה 1",
+    tags: ["VLANs", "HTTP", "Port Security"],
+    concept: "תכנון רשת תקשורת מתקדמת למתחם הטיפולים של קבוצת מרוצים.",
+    tech: "חלוקת רשת ל-VLANs (VLAN 10 לסנסורים וטלמטריה, VLAN 20 לצוות המהנדסים). הקמת שרת HTTP המציג דף בקרה בזמן אמת של מצב הצמיגים והדלק.",
+    physical: "הגדרת סוויץ' פיזי עם VLANs והגבלת גישה לפורטים שאינם מורשים.",
+    value: "חוויית חיבור לעולם הספורט המוטורי והבנת חשיבות תיעוד ורוחב פס ברשת קריטית.",
+    spec: { vlan: "VLAN 10, 20", servers: "HTTP", routing: "ניתוב בסיסי", security: "Port Security" }
+  },
+  {
+    title: "🧟 מקלט יום הדין",
+    tags: ["DHCP", "FTP", "Static Routing"],
+    concept: "רשת תקשורת מאובטחת ומבודדת לבונקר תת-קרקעי אסטרטגי.",
+    tech: "הגדרת שרת DHCP לחלוקת כתובות אוטומטית לניצולים חדשים, שרת FTP לגיבוי והורדת מדריכי הישרדות, וקישור בין שני מקלטים דרך נתבים בניתוב סטטי.",
+    physical: "חיבור שני נתבים פיזיים, הגדרת נתיב סטטי ב-CLI ווידוא תקשורת מלאה.",
+    value: "מעורר דמיון וממחיש שימוש מעשי בשרתי FTP וניתוב.",
+    spec: { vlan: "הפרדת רשתות", servers: "DHCP, FTP", routing: "ניתוב סטטי בין נתבים", security: "PING בדיקות" }
+  },
+  {
+    title: "🎸 Backstage פסטיבל",
+    tags: ["VLANs", "Trunk", "DNS"],
+    concept: "תשתית תקשורת זמנית ומאובטחת לפסטיבל מוזיקה המשרתת אומנים, קופות וקהל.",
+    tech: "הגדרת Trunk בין סוויצ'ים להעברת VLANs נפרדים (מתחם אומנים, קופות כרטיסים, ורשת WI-FI ציבורית). שרת DNS המכוון את הקהל למפת הפסטיבל.",
+    physical: "הגדרת פורט Trunk בין שני סוויצ'ים פיזיים ב-CLI והעברת תעבורה מוצלחת.",
+    value: "חיבור לעולם התרבות והבידור תוך תרגול מיתוג מתקדם.",
+    spec: { vlan: "VLANs + Trunk", servers: "DNS, HTTP", routing: "ניתוב פנימי", security: "Port Security" }
+  },
+  {
+    title: "🍔 בורגר סטאר",
+    tags: ["IoT", "DHCP", "HTTP"],
+    concept: "רשת תקשורת לסניף מסעדה המשלבת מחשבים, קופות ומערכות IoT.",
+    tech: "שילוב חיישני טמפרטורה במקררים והתראות אוטומטיות, שרת DHCP לחלוקת כתובות לקופות ושרת HTTP המציג תפריט דיגיטלי.",
+    physical: "חיבור רכיבי קצה ושרתים במעבדה, והצגת חלוקת IP מהירה.",
+    value: "התנסות ישירה בעולם ה-IoT והבנת תהליכים בבית עסק מודרני.",
+    spec: { vlan: "VLANs קופות", servers: "DHCP, HTTP", routing: "ניתוב מקומי", security: "חיישני IoT" }
+  },
+  {
+    title: "⚽ אצטדיון כדורגל",
+    tags: ["Routing", "TRACERT", "VAR"],
+    concept: "ניהול תשתית הרשת של אצטדיון כדורגל חדיש כולל ניידת השידור ומערכת ה-VAR.",
+    tech: "ניתוב סטטי מורכב בין מתחם השידור, עמדות ה-VAR והנהלת האצטדיון. ניתוח נתיבי חבילות באמצעות הפקודה TRACERT.",
+    physical: "הרצת בדיקות TRACERT ב-CMD מול הנתבים הפיזיים והסבר של כל Hop בדרך.",
+    value: "הבנה של תעבורת וידאו רגישה ושימוש בכלי דיאגנוסטיקה מתקדמים.",
+    spec: { vlan: "הפרדת אגפים", servers: "HTTP, DNS", routing: "ניתוב סטטי מורכב", security: "TRACERT חקירה" }
+  },
+  {
+    title: "🚁 חפ״ק רחפנים",
+    tags: ["WAN", "FTP", "CLI"],
+    concept: "הקמת מרכז שליטה ובקרה נייד בשטח למציאת נעדרים המחובר למפקדה המרכזית.",
+    tech: "קישוריות WAN בין החפ\"ק בשטח לבין המפקדה. שרת FTP להעלאת תמונות אוויר וסרטוני רחפנים.",
+    physical: "חיבור כבל סריאלי/אתרנט בין נתבים פיזיים והגדרת הכתובות ב-CLI.",
+    value: "תחושת שליחות והבנת השילוב בין רשת LAN מקומית לקישור WAN מרוחק.",
+    spec: { vlan: "LAN מקומי", servers: "FTP", routing: "קישוריות WAN", security: "דיאגנוסטיקת רשת" }
+  },
+  {
+    title: "🏥 בית חולים חכם",
+    tags: ["Router DHCP", "VLANs"],
+    concept: "תשתית תקשורת קריטית לבית חולים חכם השומרת על רציפות תפקודית.",
+    tech: "VLANs ייעודיים לציוד רפואי, מחשבי רופאים ואורחים. הגדרת שרת DHCP ישירות על גבי הנתב (Router DHCP) לשמירה על יתירות.",
+    physical: "הגדרת ip dhcp pool ב-CLI של נתב Cisco פיזי והצגת קבלת ה-IP במחשב קצה.",
+    value: "למידה על יתירות ואמינות ברשתות המצילות חיים.",
+    spec: { vlan: "VLANs רפואיים", servers: "DHCP בנתב (Router DHCP)", routing: "ניתוב יתיר", security: "יתירות ואמינות" }
+  },
+  {
+    title: "🎮 Cyber Arena",
+    tags: ["DNS", "TCP", "UDP"],
+    concept: "תכנון רשת מהירה ומאובטחת לאירוע גיימינג ותחרות מחשבים.",
+    tech: "ניתוח והשוואה בין פרוטוקולי TCP ל-UDP בשכבת התובלה. הגדרת שרת DNS פנימי המכוון את העמדות לשרת המשחק המקומי.",
+    physical: "ניתוח תנועת חבילות במעבדה והדגמת הבדלי הפרוטוקולים.",
+    value: "חיבור ישיר לתחביבי התלמידים והעמקה בפרוטוקולי תובלה.",
+    spec: { vlan: "VLAN גיימינג", servers: "DNS, HTTP", routing: "ניתוב מהיר", security: "חקר TCP vs UDP" }
+  },
+  {
+    title: "🛰️ תחנת מחקר במאדים",
+    tags: ["FTP", "גיבוי", "IoT"],
+    concept: "רשת תקשורת פנימית לתחנת מחקר בחלל המחוברת בקישור מרוחק לכדור הארץ.",
+    tech: "שילוב חיישני IoT לגיבוי קונפיגורציות הציוד בשרת FTP מקומי (copy running-config ftp) למקרה של תקלות.",
+    physical: "גיבוי ושחזור קונפיגורציה של סוויץ'/נתב פיזי מול שרת FTP.",
+    value: "אתגר חשיבתי עתידני ותרגול גיבוי ושחזור מערכות.",
+    spec: { vlan: "LAN תחנה", servers: "FTP לגיבוי קונפיגורציה", routing: "קישור לווייני (WAN)", security: "חיישני IoT" }
+  },
+  {
+    title: "🏨 Smart Hotel",
+    tags: ["Mail Server", "Print Server", "VLANs"],
+    concept: "רשת תקשורת המנהלת מלון חכם מקצה לקצה.",
+    tech: "חלוקת VLANs לפי קומות, שרת דוא\"ל פנימי למענה לבקשות אורחים, ושרת מדפסות מרכזי לקבלה והנהלה.",
+    physical: "הגדרת שרת מדפסות וחלוקת הרשאות גישה ברשת.",
+    value: "הדמיה של ארגון עסקי מעשי ושימוש בשרתי יישום מגוונים.",
+    spec: { vlan: "VLANs קומות", servers: "דוא\"ל, מדפסות, HTTP", routing: "ניתוב פנימי", security: "ניהול הרשאות" }
+  },
+  {
+    title: "🏫 School of the Future",
+    tags: ["Port Security", "VLANs"],
+    concept: "תכנון מחדש של רשת בית הספר של התלמידים תוך דגש על אבטחה והפרדה.",
+    tech: "הפרדת VLANs בין כיתות לימוד, מורים ומנהלה. יישום אבטחת מידע עם ססמאות מוצפנות (enable secret) ו-Port Security.",
+    physical: "הגדרת Port Security בסוויץ' פיזי - חסימת פורט בעת חיבור מחשב לא מורשה.",
+    value: "אקטואלי, מעצים, ונותן תחושת בעלות על הסביבה הלימודית.",
+    spec: { vlan: "VLANs כיתות/מורים", servers: "HTTP, DNS", routing: "ניתוב בית ספרי", security: "הצפנת ססמאות CLI" }
+  },
+  {
+    title: "🕵️ Project Sherlock",
+    tags: ["Troubleshooting", "PING", "TRACERT"],
+    concept: "פרויקט בלשי המבוסס על שתילת תקלות מכוונות ופתרונן בזמן אמת.",
+    tech: "בניית רשת תקינה, שתילת 5 תקלות (סאבנט שגוי, IP כפול, VLAN לא מוגדר ב-Trunk וכו'), ותיעוד גילוי התקלה והפתרון באמצעות PING, TRACERT ו-CLI.",
+    physical: "פתרון תקלה בלייב בציוד פיזי מול המורה והכיתה.",
+    value: "מפתח מיומנויות חשיבה גבוהות והבנה עמוקה של מחזור חיים של רשת.",
+    spec: { vlan: "VLANs מגוונים", servers: "DHCP, DNS, HTTP", routing: "ניתוב סטטי", security: "Troubleshooting מקיף" }
+  }
+];
+
+const nodeColors = ["var(--cyan)", "var(--green)", "var(--amber)", "var(--violet)"];
+const OPEN_LABEL = "📋 הצג הנחיות פרויקט מלאות", CLOSE_LABEL = "🔽 הסתר הנחיות";
+
+document.getElementById("projects").innerHTML = projects.map((p, i) => `
+  <article class="node" id="node-${i}" style="--c:${nodeColors[i % 4]}">
+    <div class="node-bar"></div>
+    <div class="node-head">
+      <span class="node-title">${p.title}</span>
+      <span class="node-id">NODE-${String(i + 1).padStart(2, "0")}</span>
+    </div>
+    <div class="node-body">
+      <div class="subnet">net: 10.0.${i + 1}.0/24</div>
+      <div class="tags">${p.tags.map(t => `<span class="pill">${t}</span>`).join("")}</div>
+      <button class="toggle" onclick="toggle(${i})" id="btn-${i}" aria-expanded="false" aria-controls="d${i}">${OPEN_LABEL}</button>
+      <div class="details" id="d${i}">
+        <div class="block"><h4>💡 הקונספט</h4><p>${p.concept}</p></div>
+        <div class="block"><h4>⚙️ יישום טכנולוגי</h4><p>${p.tech}</p></div>
+        <div class="block"><h4>🔌 עבודה בציוד פיזי</h4><p>${p.physical}</p></div>
+        <div class="block"><h4>⭐ ערך מוסף</h4><p>${p.value}</p></div>
+        <div class="spec">
+          <div><span>VLANs / Trunk</span><b>${p.spec.vlan}</b></div>
+          <div><span>שרתים</span><b>${p.spec.servers}</b></div>
+          <div><span>ניתוב / WAN</span><b>${p.spec.routing}</b></div>
+          <div><span>אבטחה / IoT</span><b>${p.spec.security}</b></div>
+        </div>
+      </div>
+    </div>
+  </article>`).join("");
+
+function setOpen(i, open) {
+  document.getElementById("d" + i).classList.toggle("open", open);
+  const b = document.getElementById("btn-" + i);
+  b.textContent = open ? CLOSE_LABEL : OPEN_LABEL;
+  b.setAttribute("aria-expanded", open);
+}
+function toggle(i) { setOpen(i, !document.getElementById("d" + i).classList.contains("open")); }
+
+function rollProject() {
+  const i = Math.floor(Math.random() * projects.length);
+  const card = document.getElementById("node-" + i);
+  card.scrollIntoView({ behavior: "smooth", block: "center" });
+  card.classList.remove("flash"); void card.offsetWidth; card.classList.add("flash");
+  setOpen(i, true);
+}
+
+function toggleDark() {
+  const r = document.documentElement, dark = r.dataset.theme !== "dark";
+  r.dataset.theme = dark ? "dark" : "light";
+  document.getElementById("darkToggleBtn").textContent = dark ? "☀️" : "🌙";
+}
+
+function calc(el) {
+  if (el) {
+    const card = el.closest(".check");
+    card.classList.toggle("checked", el.checked);
+    card.querySelector(".bracket").textContent = el.checked ? "[x]" : "[ ]";
+  }
+  const checks = document.querySelectorAll(".checks input");
+  const done = [...checks].filter(c => c.checked).length;
+  const percent = Math.round(done / checks.length * 100);
+  document.getElementById("progress-percent").textContent = percent + "%";
+  const on = Math.round(percent / 100 * 5);
+  document.querySelectorAll("#signalBars i").forEach((b, i) => b.classList.toggle("on", i < on));
+}
+</script>
+</body>
+</html>
